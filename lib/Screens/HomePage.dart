@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
                         height: totalHeight * 1,
                         width: totalWidth * 1,
                         child: snapshot.data['isApproved'] == true
-                            ? mainBody(totalHeight, totalWidth)
+                            ? mainBody(totalHeight, totalWidth, context)
                             : Center(
                                 child: Text(
                                   "Waiting for admin approval",

@@ -1,7 +1,8 @@
+import 'package:digital_booklet/Screens/AllProducts.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-Widget mainBody(double totalHeight, double totalWidth) {
+Widget mainBody(double totalHeight, double totalWidth, BuildContext ctx) {
   return Container(
     height: totalHeight * 1,
     width: totalWidth * 1,
@@ -27,32 +28,42 @@ Widget mainBody(double totalHeight, double totalWidth) {
                   ],
                 ),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Center(
-                    child: Text(
-                      "All Products",
-                      style: GoogleFonts.bebasNeue(
-                        fontSize: totalHeight * 0.036,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    ctx,
+                    MaterialPageRoute(
+                      builder: (ctx) => AllProducts(),
+                    ),
+                  );
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Center(
+                      child: Text(
+                        "All Products",
+                        style: GoogleFonts.bebasNeue(
+                          fontSize: totalHeight * 0.036,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: totalWidth * 0.04,
-                  ),
-                  Center(
-                    child: Image(
-                      height: totalHeight * 0.1,
-                      width: totalWidth * 0.1,
-                      image: AssetImage(
-                        "assets/images/product.png",
+                    SizedBox(
+                      width: totalWidth * 0.04,
+                    ),
+                    Center(
+                      child: Image(
+                        height: totalHeight * 0.1,
+                        width: totalWidth * 0.1,
+                        image: AssetImage(
+                          "assets/images/product.png",
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
