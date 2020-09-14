@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:digital_booklet/Screens/DetailsPage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -18,13 +19,32 @@ class _AllProductsState extends State<AllProducts> {
         color: Color.fromRGBO(154, 175, 253, 1),
         height: totalHeight * 0.08,
         width: totalWidth * 0.97,
-        child: Center(
-          child: Text(
-            a.data["name"],
-            style: GoogleFonts.meriendaOne(
-              fontSize: totalHeight * 0.025,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
+        child: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DetailsPage(
+                  name: a.data["name"],
+                  size: a.data["size"],
+                  price: a.data["price"],
+                  details: a.data["details"],
+                  imgLinkOne: a.data["imgLinkOne"],
+                  imgLinkTwo: a.data["imgLinkTwo"],
+                  imgLinkThree: a.data["imgLinkThree"],
+                  imgLinkFour: a.data["imgLinkFour"],
+                ),
+              ),
+            );
+          },
+          child: Center(
+            child: Text(
+              a.data["name"],
+              style: GoogleFonts.meriendaOne(
+                fontSize: totalHeight * 0.025,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),
@@ -137,14 +157,57 @@ class _AllProductsState extends State<AllProducts> {
                                       color: Color.fromRGBO(154, 175, 253, 1),
                                       height: totalHeight * 0.08,
                                       width: totalWidth * 0.97,
-                                      child: Center(
-                                        child: Text(
-                                          snapshot.data.documents[index]
-                                              .data["name"],
-                                          style: GoogleFonts.meriendaOne(
-                                            fontSize: totalHeight * 0.025,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => DetailsPage(
+                                                name: snapshot
+                                                    .data
+                                                    .documents[index]
+                                                    .data["name"],
+                                                size: snapshot
+                                                    .data
+                                                    .documents[index]
+                                                    .data["size"],
+                                                price: snapshot
+                                                    .data
+                                                    .documents[index]
+                                                    .data["price"],
+                                                details: snapshot
+                                                    .data
+                                                    .documents[index]
+                                                    .data["details"],
+                                                imgLinkOne: snapshot
+                                                    .data
+                                                    .documents[index]
+                                                    .data["imgLinkOne"],
+                                                imgLinkTwo: snapshot
+                                                    .data
+                                                    .documents[index]
+                                                    .data["imgLinkTwo"],
+                                                imgLinkThree: snapshot
+                                                    .data
+                                                    .documents[index]
+                                                    .data["imgLinkThree"],
+                                                imgLinkFour: snapshot
+                                                    .data
+                                                    .documents[index]
+                                                    .data["imgLinkFour"],
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                        child: Center(
+                                          child: Text(
+                                            snapshot.data.documents[index]
+                                                .data["name"],
+                                            style: GoogleFonts.meriendaOne(
+                                              fontSize: totalHeight * 0.025,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                           ),
                                         ),
                                       ),
