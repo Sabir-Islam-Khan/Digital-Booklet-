@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:digital_booklet/Screens/DetailsPage.dart';
+import 'package:digital_booklet/Screens/HomePage.dart';
+import 'package:digital_booklet/Services/Auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -66,7 +68,14 @@ class _AllProductsState extends State<AllProducts> {
         appBar: AppBar(
           leading: GestureDetector(
             onTap: () {
-              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => HomePage(
+                    auth: Auth(),
+                  ),
+                ),
+              );
             },
             child: Icon(
               Icons.arrow_back_ios,
